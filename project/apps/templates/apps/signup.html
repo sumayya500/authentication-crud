@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .signup-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 100%;
+        }
+        button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .login-link {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .login-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+        .errorlist {
+            color: red;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Sign Up</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div>
+                <label for="id_username">Username:</label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                    <div class="errorlist">{{ form.username.errors }}</div>
+                {% endif %}
+            </div>
+            <div>
+                <label for="id_email">Email address:</label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                    <div class="errorlist">{{ form.email.errors }}</div>
+                {% endif %}
+            </div>
+            <div>
+                <label for="id_password1">Password:</label>
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                    <div class="errorlist">{{ form.password1.errors }}</div>
+                {% endif %}
+            </div>
+            <div>
+                <label for="id_password2">Password confirmation:</label>
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                    <div class="errorlist">{{ form.password2.errors }}</div>
+                {% endif %}
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+        <div class="login-link">
+            Already have an account? <a href="{% url 'login' %}">Login here</a>
+        </div>
+    </div>
+</body>
+</html> 

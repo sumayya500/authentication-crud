@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Container for the login form */
+        .login-container {
+            background-color: white;
+            padding: 20px; /* Reduced padding */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 100%;
+            max-width: 320px; /* Smaller container */
+        }
+
+        /* Form header */
+        h2 {
+            text-align: center;
+            margin-bottom: 15px; /* Reduced margin */
+            color: #333;
+            font-size: 20px; /* Smaller font size */
+        }
+
+        /* Styling the form */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Styling the input fields */
+        input[type="text"], input[type="password"] {
+            padding: 8px; /* Reduced padding */
+            margin-bottom: 10px; /* Reduced margin */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px; /* Smaller font size */
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Styling the login button */
+        button {
+            padding: 10px; /* Reduced padding */
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px; /* Smaller font size */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Hover effect for the button */
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Styling the error message */
+        .error {
+            color: red;
+            font-size: 12px; /* Smaller font size */
+            margin-bottom: 10px; /* Reduced margin */
+            text-align: center;
+        }
+
+        /* Link styling */
+        a {
+            text-align: center;
+            display: block;
+            margin-top: 10px; /* Reduced margin */
+            color: #4CAF50;
+            text-decoration: none;
+            font-size: 14px; /* Smaller font size */
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive for smaller devices */
+        @media (max-width: 600px) {
+            .login-container {
+                padding: 15px;
+                max-width: 100%;
+            }
+
+            input[type="text"], input[type="password"] {
+                padding: 8px;
+            }
+
+            button {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Login</h2>
+
+        <form method="POST" action="">
+            {% csrf_token %}
+            
+         
+            {% if messages %}
+                <div class="error">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+           
+            <input type="text" name="username" placeholder="Username" required>
+
+
+            <input type="password" name="password" placeholder="Password" required>
+
+            <button type="submit">Login</button>
+
+      
+        </form>
+    </div>
+
+</body>
+</html>

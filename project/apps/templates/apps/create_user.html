@@ -1,0 +1,11 @@
+@user_passes_test(is_super_admin)
+@login_required
+def create_user(request):
+    if request.method == 'POST':
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('admin_dashboard')
+    else:
+        form = SignupForm()
+    return render(request, 'users/create_user.html', {'form': form})
